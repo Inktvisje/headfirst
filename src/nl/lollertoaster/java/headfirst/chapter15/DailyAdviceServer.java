@@ -18,7 +18,7 @@ public class DailyAdviceServer {
 
     public static void main(String[] args) {new DailyAdviceServer().go();}
 
-    private void go() {
+    public void go() {
         try {
             ServerSocket serverSocket = new ServerSocket(4242);
 
