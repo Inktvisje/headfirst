@@ -16,7 +16,6 @@ public class SimpleChatClient {
     private JTextField outgoing;
     private BufferedReader reader;
     private PrintWriter writer;
-    private Socket sock;
 
     public static void main(String[] args) {
         SimpleChatClient client = new SimpleChatClient();
@@ -25,6 +24,7 @@ public class SimpleChatClient {
 
     private void go() {
         JFrame frame = new JFrame("Ludicrously Simple Chat Client");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600,350);
 
         JPanel mainPanel = new JPanel();
@@ -57,7 +57,7 @@ public class SimpleChatClient {
 
     private void setupNetworking() {
         try {
-            sock = new Socket("localhost", 5000);
+            Socket sock = new Socket("localhost", 5000);
             InputStreamReader streamReader = new InputStreamReader(sock.getInputStream());
             reader = new BufferedReader(streamReader);
             writer = new PrintWriter(sock.getOutputStream());
